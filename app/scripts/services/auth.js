@@ -11,7 +11,9 @@ angular.module('test150327App')
   .factory('auth', function () {
     // Service logic
     // ...
-    var currentUser;
+
+    // someone is logged in?? yes -> user, no -> null
+    var currentUser = Parse.User.current();
    
 
     // Public API here
@@ -41,6 +43,20 @@ angular.module('test150327App')
           currentUser = Parse.User.current();
           cb();
         });
+      },
+
+      //is logged in
+      isLoggedIn: function authIsLoggedIn() {
+        if (currentUser) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      //get current user
+      getCurrentUser: function authGetCurrentUser() {
+        return currentUser;
       }
 
     };
