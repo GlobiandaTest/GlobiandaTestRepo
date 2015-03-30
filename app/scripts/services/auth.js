@@ -36,6 +36,27 @@ angular.module('test150327App')
         })
       },
 
+      //sign up
+      signUp: function authSignUp(username, password, email, cb){
+        var user = new Parse.User();
+        user.set('username', username);
+        user.set('password', password);
+        user.set('email', email);
+
+        user.signUp(null, {
+          success: function (user) {
+            if (cb.success) {
+              cb.success(user);
+            }
+          },
+          error: function (user, error) {
+            if (cb.error) {
+              cb.error(user, error);
+            }
+          }
+        })
+      },
+
       //logout
       logout: function authLogout(cb) {
         Parse.User.logOut()
