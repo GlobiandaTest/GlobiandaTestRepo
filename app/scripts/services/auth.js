@@ -45,6 +45,7 @@ angular.module('test150327App')
 
         user.signUp(null, {
           success: function (user) {
+            currentUser = Parse.User.current();
             if (cb.success) {
               cb.success(user);
             }

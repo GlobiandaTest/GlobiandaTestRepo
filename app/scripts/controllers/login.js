@@ -9,6 +9,9 @@
  */
 angular.module('test150327App')
   .controller('LoginCtrl', function ($scope, auth, $location) {
+
+    $scope.error = "";
+
   	$scope.doLogin = function () {
   		auth.login($scope.form.user,$scope.form.pass, 
   			{
@@ -18,7 +21,8 @@ angular.module('test150327App')
   					$scope.$apply();
   				},
   				error: function loginError(user, error) {
-
+            $scope.error = error.message;
+            $scope.$apply();
   				}
   			}
   		)

@@ -1,9 +1,13 @@
 <div class="col-md-12">
-	<h2>Log in</h2>
-	<form ng-submit="doLogin()" id="loginform">
+	<h2>Sign Up</h2>
+	<form ng-submit="doSignUp()" id="signupform">
 		<div class="form-group">
 			<label for="user">Username</label>
 			<input type="text" name="user" class="form-control" ng-model="form.user">
+		</div>
+		<div class="form-group">
+			<label for="user">E-mail</label>
+			<input type="email" name="user" class="form-control" ng-model="form.email">
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
