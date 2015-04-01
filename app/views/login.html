@@ -3,11 +3,11 @@
 	<form ng-submit="doLogin()" id="loginform">
 		<div class="form-group">
 			<label for="user">Username</label>
-			<input type="text" name="user" class="form-control" ng-model="form.user">
+			<input type="text" name="user" class="form-control" ng-model="form.user" autofocus required>
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" name="password" class="form-control" ng-model="form.pass">
+			<input type="password" name="password" class="form-control" ng-model="form.pass" required>
 		</div>
 		<div class="form-group">
 			<button class="btn btn-default" type="submit">Log in</button>
@@ -18,7 +18,7 @@
 		</div>
 	</form>
 	<div class="form-group">
-		<button class="btn btn-default" ng-click="doLoginFb()">Log in with Facebook</button>
+		<button class="btn btn-primary" ng-click="doLoginFb()">Log in with Facebook</button>
 	</div>
 	<br>
 </div>

@@ -37,11 +37,12 @@ angular.module('test150327App')
       },
 
       //sign up
-      signUp: function authSignUp(username, password, email, cb){
+      signUp: function authSignUp(username, password, email, fullname, cb){
         var user = new Parse.User();
         user.set('username', username);
         user.set('password', password);
         user.set('email', email);
+        user.set('fullname', fullname);
 
         user.signUp(null, {
           success: function (user) {
@@ -75,7 +76,7 @@ angular.module('test150327App')
 
               console.log("User signed up and logged in through Facebook!");
               FB.api('/me', function(me){
-                user.set("username", me.name);
+                user.set("fullname", me.name);
                 user.set("email", me.email);
                 console.log("casaperro = ", me);
 

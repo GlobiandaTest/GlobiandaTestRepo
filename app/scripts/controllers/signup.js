@@ -13,7 +13,7 @@ angular.module('test150327App')
   	$scope.error = "";
 
   	$scope.doSignUp = function () {
-  		auth.signUp($scope.form.user, $scope.form.pass, $scope.form.email, {
+  		auth.signUp($scope.form.user, $scope.form.pass, $scope.form.email, $scope.form.fullname, {
   			success: function signUpSuccess(user) {
   				$location.path('/');
   				$scope.$apply();
