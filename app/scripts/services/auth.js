@@ -67,6 +67,49 @@ angular.module('test150327App')
         });
       },
 
+      //loginfb
+      loginFb: function authLoginFb(cb) {
+        Parse.FacebookUtils.logIn("email", {
+          success: function(user) {
+            if (!user.existed()) {
+
+              console.log("User signed up and logged in through Facebook!");
+              FB.api('/me', function(me){
+                user.set("username", me.name);
+                user.set("email", me.email);
+                console.log("casaperro = ", me);
+
+                user.save(null, {
+                  success: function(user) {
+                    // Execute any logic that should take place after the object is saved.
+                    currentUser = Parse.User.current();
+                    if (cb && cb.successSignup) {
+                      cb.successSignup(user);
+                    }
+                  },
+                  error: function(user, error) {
+                    // Execute any logic that should take place if the save fails.
+                    // error is a Parse.Error with an error code and message.
+                    alert('Failed to create new object, with error code: ' + error.message);
+                  }});
+              });
+            } else {
+              console.log("User logged in through Facebook!");
+              currentUser = Parse.User.current();
+              if (cb && cb.successLogin) {
+                cb.successLogin(user);
+              }
+            }
+          },
+          error: function(user, error) {
+            console.log("User cancelled the Facebook login or did not fully authorize.");
+            if (cb && cb.error) {
+                cb.error(user, error);
+            }
+          }
+        });
+      },
+
       //is logged in
       isLoggedIn: function authIsLoggedIn() {
         if (currentUser) {

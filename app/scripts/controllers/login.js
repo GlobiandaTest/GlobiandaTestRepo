@@ -28,4 +28,22 @@ angular.module('test150327App')
   			}
   		)
   	}
+
+    $scope.doLoginFb = function () {
+      auth.loginFb({
+        successSignup: function fbSuccessSignup (user) {
+          $location.path('/');
+          $scope.$apply();
+        },
+        successLogin: function fbSuccessLogin (user) {
+          $location.path('/');
+          $scope.$apply();
+        },
+        error: function fbError (user, error) {
+          $scope.error = error.message;
+          $scope.$apply();
+        }
+      });
+    };
+
   });
