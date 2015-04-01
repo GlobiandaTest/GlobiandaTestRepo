@@ -17,6 +17,7 @@ angular.module('test150327App')
   			{
   				success: function loginSuccess(user) {
   					//alert(user._sessionToken);
+            //console.log('Email verification: 'user.get('emailVerified'));
   					$location.path('/');
   					$scope.$apply();
   				},

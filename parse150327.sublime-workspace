@@ -523,7 +523,7 @@
 			"file": "app/scripts/services/auth.js",
 			"settings":
 			{
-				"buffer_size": 1889,
+				"buffer_size": 1885,
 				"line_ending": "Unix"
 			}
 		},
@@ -712,11 +712,7 @@
 	},
 	"expanded_folders":
 	[
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/services",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views"
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327"
 	],
 	"file_history":
 	[
@@ -970,15 +966,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1889,
+						"buffer_size": 1885,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1143,
-								1143
+								518,
+								518
 							]
 						],
 						"settings":
@@ -988,10 +984,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1071.0,
+						"translation.y": 561.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1013,13 +1009,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 187.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1128,7 +1125,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1156,7 +1155,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
