@@ -51,7 +51,10 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        access: {
+          needLogin: false
+        }
       })
       .when('/logout', {
         templateUrl: 'views/logout.html',
@@ -59,7 +62,10 @@ angular
       })
       .when('/signup', {
         templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        access: {
+          needLogin: false
+        }
       })
       .when('/protected', {
         templateUrl: 'views/protected.html',
@@ -68,17 +74,31 @@ angular
           needLogin: true
         }
       })
+      .when('/resetpassword', {
+        templateUrl: 'views/resetpassword.html',
+        controller: 'ResetpasswordCtrl',
+        access: {
+          needLogin: false
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
   .run(function ($rootScope, $location, auth) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
+      
       if (next.access && !auth.isLoggedIn() && next.access.needLogin) {
         //console.log(next);
         auth.setPreviousUrl(next.$$route.originalPath);
-        $location.path('/login')
-      }
+        $location.path('/login');
+      };
+
+      if (next.access && auth.isLoggedIn() && (!next.access.needLogin)) {
+        //console.log(next);
+        $location.path('/');
+      };
+
     })
   })
   ;

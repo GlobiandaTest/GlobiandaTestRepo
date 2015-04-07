@@ -58,7 +58,7 @@ angular.module('test150327App')
               cb.error(user, error);
             }
           }
-        })
+        });
       },
 
       //logout
@@ -140,6 +140,23 @@ angular.module('test150327App')
       // clear the url
       clearPreviousUrl: function authClearPreviousUrl () {
         previousUrl = undefined;
+      },
+
+      // resetPassword
+      resetPassword: function authResetPassword (email, cb) {
+        Parse.User.requestPasswordReset(email, {
+          success: function() {
+            if(cb.success){
+              cb.success();
+            }
+          },
+          error: function(error) {
+            if(cb.error){
+              //error.code error.message
+              cb.error(error);
+            }
+          }
+        });
       }
 
     };

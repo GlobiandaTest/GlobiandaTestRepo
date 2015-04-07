@@ -35,3 +35,25 @@ emailSender.sendEmail("tumail","Cintia PE EME");
 });
 
 
+Parse.Cloud.afterSave(Parse.User, function(request) {
+  if (!request.object.existed()) {
+
+    Parse.Cloud.useMasterKey();  
+
+      query = new Parse.Query(Parse.Role);
+      query.equalTo("name", "buyer");
+      query.first ( {
+        success: function(object) {
+
+          object.relation("users").add(request.user);
+
+          object.save();
+
+
+        },
+        error: function(error) {
+          throw "Got an error " + error.code + " : " + error.message;
+        }
+      });
+    };
+});
