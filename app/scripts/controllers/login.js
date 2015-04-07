@@ -18,7 +18,8 @@ angular.module('test150327App')
   				success: function loginSuccess(user) {
   					//alert(user._sessionToken);
             //console.log('Email verification: 'user.get('emailVerified'));
-  					$location.path('/');
+  					
+            redirectUrl();
   					$scope.$apply();
   				},
   				error: function loginError(user, error) {
@@ -27,16 +28,16 @@ angular.module('test150327App')
   				}
   			}
   		)
-  	}
+  	};
 
     $scope.doLoginFb = function () {
       auth.loginFb({
         successSignup: function fbSuccessSignup (user) {
-          $location.path('/');
+          redirectUrl();
           $scope.$apply();
         },
         successLogin: function fbSuccessLogin (user) {
-          $location.path('/');
+          redirectUrl();
           $scope.$apply();
         },
         error: function fbError (user, error) {
@@ -45,5 +46,14 @@ angular.module('test150327App')
         }
       });
     };
+
+    var redirectUrl = function () {
+      if (auth.getPreviousUrl()) {
+        $location.path(auth.getPreviousUrl());
+        auth.clearPreviousUrl();
+      } else {
+        $location.path('/');
+      };
+    }
 
   });

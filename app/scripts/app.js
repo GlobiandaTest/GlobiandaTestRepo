@@ -43,38 +43,23 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        access: {
-          needLogin: false
-        }
+        controller: 'MainCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        access: {
-          needLogin: false
-        }
+        controller: 'AboutCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        access: {
-          needLogin: false
-        }
+        controller: 'LoginCtrl'
       })
       .when('/logout', {
         templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl',
-        access: {
-          needLogin: false
-        }
+        controller: 'LogoutCtrl'
       })
       .when('/signup', {
         templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl',
-        access: {
-          needLogin: false
-        }
+        controller: 'SignupCtrl'
       })
       .when('/protected', {
         templateUrl: 'views/protected.html',
@@ -89,7 +74,9 @@ angular
   })
   .run(function ($rootScope, $location, auth) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-      if (!auth.isLoggedIn() && next.access.needLogin) {
+      if (next.access && !auth.isLoggedIn() && next.access.needLogin) {
+        //console.log(next);
+        auth.setPreviousUrl(next.$$route.originalPath);
         $location.path('/login')
       }
     })

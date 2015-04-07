@@ -15,7 +15,9 @@ angular.module('test150327App')
     // someone is logged in?? yes -> user, no -> null
     var currentUser = Parse.User.current();
    
-
+    // previous url for login
+    var previousUrl;
+    
     // Public API here
     return {
 
@@ -123,6 +125,21 @@ angular.module('test150327App')
       //get current user
       getCurrentUser: function authGetCurrentUser() {
         return currentUser;
+      },
+
+      // set url
+      setPreviousUrl: function authSetPreviousUrl (url) {
+        previousUrl = url;
+      },
+
+      // get url
+      getPreviousUrl: function authGetPreviousUrl () {
+        return previousUrl;
+      },
+
+      // clear the url
+      clearPreviousUrl: function authClearPreviousUrl () {
+        previousUrl = undefined;
       }
 
     };
