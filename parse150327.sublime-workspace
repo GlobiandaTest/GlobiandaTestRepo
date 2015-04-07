@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"fu",
+				"function"
+			],
+			[
+				"succ",
+				"successSignup"
+			],
+			[
+				"su",
+				"successSignup"
+			],
+			[
+				"s",
+				"successSignup"
+			],
+			[
 				"pass",
 				"password"
 			],
@@ -114,10 +130,6 @@
 			[
 				"u",
 				"userprofile"
-			],
-			[
-				"s",
-				"scope"
 			],
 			[
 				"inici",
@@ -452,10 +464,6 @@
 				"onclick	Attr"
 			],
 			[
-				"fu",
-				"funciona"
-			],
-			[
 				"Per",
 				"PersonaJuridica"
 			],
@@ -506,14 +514,6 @@
 			[
 				"cre",
 				"crearButtonCalc"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"fn",
-				"function"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "app/scripts/services/auth.js",
 			"settings":
 			{
-				"buffer_size": 1885,
+				"buffer_size": 3590,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,7 +547,15 @@
 			"file": "app/scripts/controllers/login.js",
 			"settings":
 			{
-				"buffer_size": 658,
+				"buffer_size": 1186,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 1834,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,7 +563,7 @@
 			"file": "app/views/login.html",
 			"settings":
 			{
-				"buffer_size": 781,
+				"buffer_size": 930,
 				"line_ending": "Unix"
 			}
 		},
@@ -563,7 +571,7 @@
 			"file": "app/scripts/controllers/signup.js",
 			"settings":
 			{
-				"buffer_size": 627,
+				"buffer_size": 1101,
 				"line_ending": "Unix"
 			}
 		},
@@ -571,7 +579,7 @@
 			"file": "app/views/signup.html",
 			"settings":
 			{
-				"buffer_size": 934,
+				"buffer_size": 1343,
 				"line_ending": "Unix"
 			}
 		}
@@ -712,10 +720,16 @@
 	},
 	"expanded_folders":
 	[
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327"
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts"
 	],
 	"file_history":
 	[
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/signup.html",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/README.md",
+		"/home/likewise-open/GLOBANT/german.schacht/Desktop/ArchivosEscritorioWEBUI/labs/test150327/dist/scripts/scripts.864d2633.js",
+		"/home/likewise-open/GLOBANT/german.schacht/Desktop/ArchivosEscritorioWEBUI/labs/test150327/dist/scripts/vendor.171d9a80.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/logout.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/index.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Desktop/ArchivosEscritorioWEBUI/jelounodegular/jelounodegular/client/app/profile/profile.html",
@@ -839,11 +853,7 @@
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/partials/comentarios.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/requiremain.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/require.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/libs/star-rating.min.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/libs/star-rating.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/app.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/controllers.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/css/main.css"
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/libs/star-rating.min.js"
 	],
 	"find":
 	{
@@ -862,6 +872,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"required",
+			"};\n",
 			"getCurrentUser",
 			".container",
 			"300px",
@@ -957,7 +969,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -966,15 +978,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1885,
+						"buffer_size": 3590,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								1073,
+								1073
 							]
 						],
 						"settings":
@@ -984,10 +996,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 561.0,
+						"translation.y": 408.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1003,8 +1015,8 @@
 						"selection":
 						[
 							[
-								942,
-								942
+								1218,
+								1218
 							]
 						],
 						"settings":
@@ -1016,7 +1028,7 @@
 						"translation.y": 187.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1044,7 +1056,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1053,15 +1065,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 658,
+						"buffer_size": 1186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								567,
-								567
+								729,
+								729
 							]
 						],
 						"settings":
@@ -1071,56 +1083,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 781,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								35,
-								35
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 408.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/scripts/controllers/signup.js",
+					"buffer": 4,
+					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 627,
+						"buffer_size": 1834,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								381,
-								381
+								947,
+								947
 							]
 						],
 						"settings":
@@ -1130,27 +1113,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 51.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "app/views/signup.html",
+					"buffer": 5,
+					"file": "app/views/login.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 934,
+						"buffer_size": 930,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								82,
-								82
+								236,
+								236
 							]
 						],
 						"settings":
@@ -1162,7 +1145,66 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/scripts/controllers/signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/signup.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								240,
+								240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1228,7 +1270,7 @@
 		[
 			[
 				"",
-				"~/Documents/WEBUI/ArchivosEscritorio/yeoman/jelou.sublime-project"
+				"~/Documents/WEBUI/ArchivosEscritorio/jelounodegular/jelounodegular.sublime-project"
 			]
 		],
 		"width": 380.0
