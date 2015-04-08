@@ -1,0 +1,3 @@
+REM Test user Creation
+parse deploy
+curl -X POST -H "X-Parse-Application-Id: VdnHbNNGjRWrRzYIdOlndzSBppkrOt3bySgdDfaB" -H "X-Parse-REST-API-Key: SIaXQy4cb9Enhb0AdKu4A0B5JGZ64qJimtuB2OwX" -H "X-Parse-Revocable-Session: 1" -H "Content-Type: application/json" -d "{\"username\":\"cooldude\",\"password\":\"saraza\",\"email\":\"saraza@asara.com\",\"fullname\":\"testing\",\"type\":1}" -k https://api.parse.com/1/users
