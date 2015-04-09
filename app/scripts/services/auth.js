@@ -78,6 +78,7 @@ angular.module('test150327App')
 
               console.log("User signed up and logged in through Facebook!");
               FB.api('/me', function(me){
+                console.log(me);
                 user.set("fullname", me.name);
                 user.set("email", me.email);
                 console.log("casaperro = ", me);
@@ -140,6 +141,12 @@ angular.module('test150327App')
       // clear the url
       clearPreviousUrl: function authClearPreviousUrl () {
         previousUrl = undefined;
+      },
+
+      getCurrentUserData: function getCurrentUserData (cb) {
+        Parse.User.current().fetch().then(function (us) {
+          cb.success(us);
+        });
       },
 
       // resetPassword

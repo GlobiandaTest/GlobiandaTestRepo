@@ -4,14 +4,14 @@
 var emailSender = require('cloud/emailSending.js');
 var type=undefined;
  
-Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+/*Parse.Cloud.beforeSave(Parse.User, function(request, response) {
   //these 2 are controlled by parse. :)
-  /*if (!request.object.get("username")) {
+  if (!request.object.get("username")) {
     response.error("Username is required for signup");
   } else
   if (!request.object.get("password")) {
     response.error("Password is required for signup");
-  } else*/
+  } else
    
   //get client type
   type=request.object.get('type');
@@ -25,7 +25,7 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
   } else {
     response.success();
   }
-});
+});*/
  
 Parse.Cloud.afterSave(Parse.User, function(request) {
   if (!request.object.existed()) {

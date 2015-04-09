@@ -1,1 +1,30 @@
-<p>This is the protected view.</p>
+<div class="col-md-12">
+	<h2>Protected Profile
+		<button class="btn btn-default pull-right" ng-click="toggleEdit()" ng-hide="edit">
+			<span class="glyphicon glyphicon-pencil"></span>
+		</button>
+		<button class="btn btn-default pull-right" ng-show="edit" ng-click="toggleEdit()">
+			<span class="glyphicon glyphicon-remove"></span>
+		</button>
+		<button class="btn btn-default pull-right" ng-show="edit">
+			<span class="glyphicon glyphicon-floppy-disk"></span>
+		</button>
+	</h2>
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">Full Name</h4>
+			<p class="list-group-item-text">{{ user.attributes.fullname }}</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">Email</h4>
+			<p class="list-group-item-text">{{ user.attributes.email }}</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">Phone </h4>
+			<p class="list-group-item-text" ng-hide="edit"> {{ user.attributes.phone }} </p>
+			<p class="list-group-item-text" ng-show="edit">
+				<input type="text" class="form-control">
+			</p>
+		</div>
+	</div>
+</div>
