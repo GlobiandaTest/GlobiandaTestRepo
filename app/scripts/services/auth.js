@@ -81,6 +81,7 @@ angular.module('test150327App')
                 console.log(me);
                 user.set("fullname", me.name);
                 user.set("email", me.email);
+                user.set("fbid", me.id);
                 console.log("casaperro = ", me);
 
                 user.save(null, {

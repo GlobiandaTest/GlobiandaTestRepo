@@ -26,6 +26,11 @@ var type=undefined;
     response.success();
   }
 });*/
+
+Parse.Cloud.afterSave("Vianda", function(request) {
+  var name = request.object.get('name');
+  Parse.Cloud.run('sendFBNotification', {'comida': name});
+});
  
 Parse.Cloud.afterSave(Parse.User, function(request) {
   if (!request.object.existed()) {
@@ -43,9 +48,8 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
       success: function(object) {
  
         object.relation("users").add(request.user);
- 
         object.save();
- 
+        console.log("changed role");
  
       },
       error: function(error) {
@@ -53,6 +57,58 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
       }
     });
   };
+});
+
+Parse.Cloud.define("sendFBNotification", function(request) {
+  Parse.Cloud.useMasterKey();
+  console.log('[info] -- entroooooooo yeahhhh :O :P');
+  var query = new Parse.Query(Parse.User);
+  query.exists("fbid");
+
+  query.find({
+
+    success: function (results) {
+
+      console.log("[info] -- " + results.length);
+
+      var fbid = [];
+
+      for (var i = 0; i < results.length; i++) {
+        var text = ""+results[i].get('fbid');
+        fbid.push(text);
+      };
+
+      var comida = request.params.comida.replace(' ', '%20');
+
+      for (var j = 0; j < fbid.length; j++) {
+        var fbUserId = fbid[j];
+        var app_access_token = "1415345535439091|DgauKNj_r4Lp6jsFlLswEn72Sps";
+        var template = "Nueva%20vianda%20disponible:%20"+comida;
+        var href = "http://globianda-dev-test.parseapp.com/";
+
+        var url = "https://graph.facebook.com/"+fbUserId+"/notifications?access_token="+app_access_token+"&template="+template+"&href="+href;
+
+        Parse.Cloud.httpRequest({
+          method: "POST",
+          url: url,
+
+          success: function(httpResponse) {
+            console.log(httpResponse.text);
+          },
+
+          error: function(httpResponse) {
+            console.error('Request failed with response code'+ httpResponse.status);
+            
+          }
+        });
+
+      }
+    },
+
+    error: function(error) {
+      console.error(error.message);
+    }
+  })
 });
  
 /*
@@ -62,4 +118,33 @@ Parse.Cloud.define("testEmail", function(request, response) {
     emailSender.sendEmail("tumail","Cintia PE EME");
     //emailSender.sendEmail("sergiojara3roa@gmail.com","Sergio Jara");
     response.success("se envio papa!!! thanks to nico cloud code master analyst");
+});
+
+
+/*
+curl -X POST -H "X-Parse-Application-Id: VdnHbNNGjRWrRzYIdOlndzSBppkrOt3bySgdDfaB" -H "X-Parse-REST-API-Key: SIaXQy4cb9Enhb0AdKu4A0B5JGZ64qJimtuB2OwX" -H "Content-Type: application/json" -d "{}" -k https://api.parse.com/1/functions/testFB
+*/
+Parse.Cloud.define("testFB", function(request, response) {
+    var fbUserId = "10153257365493112";
+    var app_access_token = "1415345535439091|DgauKNj_r4Lp6jsFlLswEn72Sps";
+    var template = "Nueva%20vianda%20disponible%20";
+    var href = "http://globianda-dev-test.parseapp.com/";
+
+    var url = "https://graph.facebook.com/"+fbUserId+"/notifications?access_token="+app_access_token+"&template="+template+"&href="+href;
+
+    Parse.Cloud.httpRequest({
+      method: "POST",
+      url: url,
+
+      success: function(httpResponse) {
+        console.log(httpResponse.text);
+        response.success("se envio papa!!! thanks to nico cloud code master analyst");
+      },
+
+      error: function(httpResponse) {
+        console.error('Request failed with response code '+ httpResponse.status);
+        response.error("NO se envio papa!!! thanks to nico cloud code master analyst");
+        
+      }
+    });
 });
