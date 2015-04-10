@@ -1,6 +1,6 @@
 <div ng-controller="NavbarCtrl">
 	<div class="header">
-	  <div class="navbar navbar-default" role="navigation">
+	  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 	    <div class="container">
 	      <div class="navbar-header">
 	
@@ -11,7 +11,7 @@
 	          <span class="icon-bar"></span>
 	        </button>
 	
-	        <a class="navbar-brand" href="#/">test150327</a>
+	        <a class="navbar-brand" href="#/">Globianda INC.</a>
 	      </div>
 	
 	      <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -22,10 +22,10 @@
 	          <li><a href="#/">Contact</a></li>
 	        </ul>
 	        <ul class="nav navbar-nav pull-right">
-	          <li><a href="#/login" ng-hide="isLoggedIn()">Login</a></li>
-	          <li><a href="#/signup" ng-hide="isLoggedIn()">Sign Up</a></li>
-	          <li><a href="#/logout" ng-show="isLoggedIn()">Logout</a></li>
-	          <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().get('fullname') }}</p></li>
+	          <li ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
+	          <li ng-hide="isLoggedIn()"><a href="#/signup">Sign Up</a></li>
+	          <li ng-show="isLoggedIn()"><a href="#/logout">Logout</a></li>
+	          <li ng-show="isLoggedIn()"><a href="#/protected">Hello {{ getCurrentUser().get('fullname') }}</a></li>
 	      	</ul>
 	      </div>
 	    </div>

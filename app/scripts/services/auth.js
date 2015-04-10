@@ -143,9 +143,27 @@ angular.module('test150327App')
         previousUrl = undefined;
       },
 
-      getCurrentUserData: function getCurrentUserData (cb) {
+      getCurrentUserData: function authGetCurrentUserData (cb) {
         Parse.User.current().fetch().then(function (us) {
           cb.success(us);
+        });
+      },
+
+      updateCurrentUserData: function authUpdateCurrentUserData (fullname, email, phone, cb) {
+        currentUser.set('fullname', fullname);
+        currentUser.set('email', email);
+        currentUser.set('phone', phone);
+        currentUser.save(null, {
+          success: function (us) {
+            if (cb && cb.success) {
+              cb.success(us);
+            }
+          },
+          error: function (us, error) {
+            if (cb && cb.error) {
+              cb.error(us, error);
+            }
+          }
         });
       },
 

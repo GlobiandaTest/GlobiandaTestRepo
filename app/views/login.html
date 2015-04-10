@@ -1,24 +1,26 @@
-<div class="col-md-12">
-	<h2>Log in</h2>
-	<form ng-submit="doLogin()" id="loginform">
+<div class="container-padding-top">
+	<div class="col-md-12">
+		<h2>Log in</h2>
+		<form ng-submit="doLogin()" id="loginform">
+			<div class="form-group">
+				<label for="user">Username</label>
+				<input type="text" name="user" class="form-control" ng-model="form.user" autofocus required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name="password" class="form-control" ng-model="form.pass" required>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-default" type="submit">Log in</button> <a href="#/resetpassword" class="btn btn-default">Forgot the Password</a>
+			</div>
+			<div class="alert alert-danger alert-dismissable" role="alert" ng-show="error">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Error!</strong> {{ error }}
+			</div>
+		</form>
 		<div class="form-group">
-			<label for="user">Username</label>
-			<input type="text" name="user" class="form-control" ng-model="form.user" autofocus required>
+			<button class="btn btn-primary" ng-click="doLoginFb()">Log in with Facebook</button>
 		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" name="password" class="form-control" ng-model="form.pass" required>
-		</div>
-		<div class="form-group">
-			<button class="btn btn-default" type="submit">Log in</button> <a href="#/resetpassword" class="btn btn-default">Forgot the Password</a>
-		</div>
-		<div class="alert alert-danger alert-dismissable" role="alert" ng-show="error">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<strong>Error!</strong> {{ error }}
-		</div>
-	</form>
-	<div class="form-group">
-		<button class="btn btn-primary" ng-click="doLoginFb()">Log in with Facebook</button>
+		<br>
 	</div>
-	<br>
 </div>
