@@ -12,7 +12,7 @@ angular.module('test150327App')
   	
   	$scope.user = {};
   	$scope.formData = {};
-    
+
   	$scope.error = "";
   	$scope.success = "";
 
@@ -44,7 +44,7 @@ angular.module('test150327App')
           $scope.$apply();
   			},
   			error: function (us, error) {
-  				$scope.error = error;
+  				$scope.error = error.message;
   				$scope.$apply();
   			}
   		});
