@@ -168,6 +168,31 @@ angular.module('test150327App')
         });
       },
 
+      uploadProfileImg: function authUploadProfileImg (file, cb) {
+        
+        Parse.File(file.name, file);
+        var avatar = new Parse.File(currentUser.get('username')+"-avatar", file);
+
+        avatar.save().then(function() {
+          
+          currentUser.set('avatar', avatar);
+          currentUser.save(null, {
+            success: function (us) {
+              if (cb && cb.success) {
+                cb.success(us);
+              }
+            },
+            error: function (us, error) {
+              if (cb && cb.error) {
+                cb.errorUser(us, error);
+              }
+            }
+          });
+        }, function(error) {
+          cb.errorFile(error);
+        });
+      },
+
       // resetPassword
       resetPassword: function authResetPassword (email, cb) {
         Parse.User.requestPasswordReset(email, {

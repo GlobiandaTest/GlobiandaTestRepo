@@ -50,4 +50,35 @@ angular.module('test150327App')
   		});
   	};
 
+    $scope.uploadImg = function uploadImg() {
+      var fileUploadControl = $('#avatar')[0];
+      if (fileUploadControl.files.length > 0) {
+        var file = fileUploadControl.files[0];
+        auth.uploadProfileImg(file, {
+          success: function (us) {
+            $scope.success = "The Image has been uploaded";
+            $scope.user = us;
+            $scope.edit = false;
+            $scope.$apply();
+          },
+          errorUser: function (us, error) {
+            $scope.error = error.message;
+            $scope.$apply();
+          },
+          errorFile: function (error) {
+            $scope.error = "The file either could not be read, or could not be saved to Parse."
+            $scope.$apply();
+          }
+        })
+      }
+    };
+
+    // make the file select work
+    $(document).on('change', '.btn-file :file', function() {
+      var input = $(this),
+          numFiles = input.get(0).files ? input.get(0).files.length : 1,
+          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.trigger('fileselect', [numFiles, label]);
+    });
+
   });
