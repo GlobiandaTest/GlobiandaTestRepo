@@ -81,13 +81,14 @@ Parse.Cloud.define("sendFBNotification", function(request) {
       };
 
       var param = request.params.comida.toString();
-      var comida = param.replace(' ', '%20');
+      var comida = param.replace(/ /g, '%20');
+      console.log(comida);
 
       for (var j = 0; j < fbid.length; j++) {
         var fbUserId = fbid[j];
         var app_access_token = "1415345535439091|DgauKNj_r4Lp6jsFlLswEn72Sps";
         var template = "Nueva%20vianda%20disponible:%20"+comida;
-        var href = "/index.html/";
+        var href = "index.html/";
 
         var url = "https://graph.facebook.com/"+fbUserId+"/notifications?access_token="+app_access_token+"&template="+template+"&href="+href;
 

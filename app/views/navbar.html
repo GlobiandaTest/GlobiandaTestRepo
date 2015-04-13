@@ -24,7 +24,11 @@
 	          <li ng-class="{active: isActive('/login')}" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
 	          <li ng-class="{active: isActive('/signup')}" ng-hide="isLoggedIn()"><a href="#/signup">Sign Up</a></li>
 	          <li ng-class="{active: isActive('/logout')}" ng-show="isLoggedIn()"><a href="#/logout">Logout</a></li>
-	          <li ng-class="{active: isActive('/protected')}" ng-show="isLoggedIn()"><a href="#/protected">Hello {{ getCurrentUser().get('fullname') }}</a></li>
+	          <li ng-class="{active: isActive('/protected')}" ng-show="isLoggedIn()"><a href="#/protected">Hello {{ getCurrentUser().get('fullname') }} 
+				<img ng-if="actUser.get('avatar')" ng-src="{{actUser.get('avatar')._url}}">
+				<img ng-if="!actUser.get('avatar') && fbProfileUrl" ng-src="{{ fbProfileUrl }}">
+				<span ng-if="!actUser.get('avatar') && !fbProfileUrl" class="glyphicon glyphicon-user"></span>
+	          </a></li>
 	      	</ul>
 	      </div>
 	    </div>
