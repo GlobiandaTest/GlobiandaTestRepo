@@ -2,11 +2,75 @@
 // For example:
  
 var emailSender = require('cloud/emailSending.js');
+var Image = require('parse-image');
 var type=undefined;
+
+
+// https://parse.com/docs/cloud_modules_guide#images-example
  
-/*Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+  
+  var user = request.object;
+  
+  if (!user.get('avatar')) {
+    response.success();
+    return;
+  };
+
+  if (!user.dirty('avatar')) {
+    response.success();
+    return;
+  };
+
+  Parse.Cloud.httpRequest({
+    url:  user.get('avatar').url()
+
+  }).then(function(response) {
+    var image = new Image();
+    return image.setData(response.buffer);
+
+  }).then(function(image) {
+    // transformar en cuadrado tomando el menor valor entre altura y ancho
+    var size = Math.min(image.width(), image.height());
+    return image.crop({
+      left: (image.width() - size) / 2,
+      top: (image.height() - size) / 2,
+      width: size,
+      height: size
+    });
+
+  }).then(function(image) {
+    // achicar
+    return image.scale({
+      width: 96,
+      height: 96
+    });
+
+  }).then(function(image) {
+    // JPEG es mas liviano
+    return image.setFormat('JPEG');
+
+  }).then(function(image) {
+    // Poner la data en un buffer
+    return image.data();
+
+  }).then(function(buffer) {
+    // guardar en un file
+    var base64 = buffer.toString('base64');
+    var cropped = new Parse.File(user.get('username')+'-thumb.jpg', {base64: base64});
+    return cropped.save();
+
+  }).then(function(cropped) {
+    user.set('thumbnail', cropped);
+
+  }).then(function(result) {
+    response.success();
+  }, function(error) {
+    response.error(error)
+  });
+
   //these 2 are controlled by parse. :)
-  if (!request.object.get("username")) {
+  /*if (!request.object.get("username")) {
     response.error("Username is required for signup");
   } else
   if (!request.object.get("password")) {
@@ -24,8 +88,8 @@ var type=undefined;
     response.error("Fullname is required for signup");
   } else {
     response.success();
-  }
-});*/
+  }*/
+});
 
 Parse.Cloud.afterSave("Vianda", function(request) {
   if (!request.object.existed()) {

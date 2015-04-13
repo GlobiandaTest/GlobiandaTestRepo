@@ -24,9 +24,9 @@
 	          <li ng-class="{active: isActive('/login')}" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
 	          <li ng-class="{active: isActive('/signup')}" ng-hide="isLoggedIn()"><a href="#/signup">Sign Up</a></li>
 	          <li ng-class="{active: isActive('/logout')}" ng-show="isLoggedIn()"><a href="#/logout">Logout</a></li>
-	          <li ng-class="{active: isActive('/protected')}" ng-show="isLoggedIn()"><a href="#/protected">Hello {{ getCurrentUser().get('fullname') }} <span ng-if="!actUser.get('avatar') && !fbProfileUrl" class="glyphicon glyphicon-user"></span> </a></li>
-			  <li ng-if="actUser.get('avatar')"><img class="navbar-profile-img img-rounded"  ng-src="{{actUser.get('avatar')._url}}"></li>
-				<li ng-if="!actUser.get('avatar') && fbProfileUrl"><img class="navbar-profile-img img-rounded"  ng-src="{{ fbProfileUrl }}">
+	          <li ng-class="{active: isActive('/protected')}" ng-show="isLoggedIn()"><a href="#/protected">Hello {{ getCurrentUser().get('fullname') }} <span ng-if="!actUser.get('thumbnail') && !fbProfileUrl" class="glyphicon glyphicon-user"></span> </a></li>
+			  <li ng-if="actUser.get('thumbnail')"><img class="navbar-profile-img img-rounded"  ng-src="{{actUser.get('thumbnail')._url}}"></li>
+				<li ng-if="!actUser.get('thumbnail') && fbProfileUrl"><img class="navbar-profile-img img-rounded"  ng-src="{{ fbProfileUrl }}">
 			  </li>
 				
 	          
