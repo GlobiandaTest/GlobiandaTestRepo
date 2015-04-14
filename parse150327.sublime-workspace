@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"h",
+				"height"
+			],
+			[
+				"Contrl",
+				"fileUploadControl"
+			],
+			[
+				"error",
+				"error"
+			],
+			[
+				"curr",
+				"currentUser"
+			],
+			[
+				"getC",
+				"getCurrentUserData"
+			],
+			[
+				"get",
+				"getCurrentUser"
+			],
+			[
 				"co",
 				"comida"
 			],
@@ -26,14 +50,6 @@
 			[
 				"cu",
 				"currentUser"
-			],
-			[
-				"get",
-				"getCurrentUserData"
-			],
-			[
-				"curr",
-				"currentUserData"
 			],
 			[
 				"current",
@@ -498,48 +514,16 @@
 			[
 				"min",
 				"min-height"
-			],
-			[
-				"on",
-				"onclick	Attr"
-			],
-			[
-				"Per",
-				"PersonaJuridica"
-			],
-			[
-				"Persona",
-				"personaFisica"
-			],
-			[
-				"bord",
-				"border"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/signup.js",
+			"file": "app/scripts/controllers/navbar.js",
 			"settings":
 			{
-				"buffer_size": 1101,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/auth.js",
-			"settings":
-			{
-				"buffer_size": 5210,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "parsecloud/cloud/emailSending.js",
-			"settings":
-			{
-				"buffer_size": 841,
+				"buffer_size": 1040,
 				"line_ending": "Unix"
 			}
 		}
@@ -681,31 +665,33 @@
 	"expanded_folders":
 	[
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/services",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/parsecloud",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/parsecloud/cloud"
 	],
 	"file_history":
 	[
+		"/home/likewise-open/GLOBANT/german.schacht/Desktop/ArchivosEscritorioWEBUI/labs/test150327/parsecloud/config/global.json",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/parsecloud/cloud/main.js",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/navbar.html",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/navbar.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/protected.js",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/protected.html",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/styles/main.css",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/services/auth.js",
+		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/signup.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/index.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/main.html",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/services/auth.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/parsecloud/cloud/main.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/navbar.js",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/navbar.html",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/protected.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/signup.html",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/styles/main.css",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/resetpassword.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/app.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/login.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/login.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/logout.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/views/about.html",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/signup.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/services/user.js",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/ArchivosEscritorio/labs/test150327/app/scripts/controllers/resetpassword.js",
 		"/etc/apt/sources.list",
@@ -815,8 +801,7 @@
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/index.html",
 		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/js/appLoader.js",
 		"/home/likewise-open/GLOBANT/german.schacht/.cache/.fr-p8GLI5/asd/appLoader.js",
-		"/home/likewise-open/GLOBANT/german.schacht/.cache/.fr-hrvSJa/asd/index.html",
-		"/home/likewise-open/GLOBANT/german.schacht/Documents/WEBUI/Archivos Escritorio/Projects/ValoraMe/css/rogiestar.css"
+		"/home/likewise-open/GLOBANT/german.schacht/.cache/.fr-hrvSJa/asd/index.html"
 	],
 	"find":
 	{
@@ -835,6 +820,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"user",
 			"required",
 			"};\n",
 			"getCurrentUser",
@@ -932,94 +918,34 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/signup.js",
+					"file": "app/scripts/controllers/navbar.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1101,
+						"buffer_size": 1040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								325,
-								325
+								887,
+								887
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 51.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/scripts/services/auth.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5210,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2133,
-								2133
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 663.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "parsecloud/cloud/emailSending.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 841,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

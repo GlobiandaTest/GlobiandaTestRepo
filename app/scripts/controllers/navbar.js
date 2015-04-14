@@ -30,7 +30,7 @@ angular.module('test150327App')
     	} else {
     		$scope.actUser = {};
     		$scope.fbProfileUrl = "";
-    		$scope.$apply();
+    		//$scope.$apply();
     	}
     	//alert('cambio el user');
     });
