@@ -1,26 +1,28 @@
 'use strict';
 
-Parse.initialize("VdnHbNNGjRWrRzYIdOlndzSBppkrOt3bySgdDfaB", "CkGzTIsk7Eh6CFFsu5Ur31OSE14dEXcGSRAKbmjs");
+//load config
+var config=$.parseJSON($.ajax({url: "config/global.json", dataType: 'json', async: false}).responseText);
+
+Parse.initialize(config.parse.applicationId,config.parse.javaScriptKey);
 
 window.fbAsyncInit = function() {
-    Parse.FacebookUtils.init({ // this line replaces FB.init({
-      appId      : '1415345535439091', // Facebook App ID
-      status     : true,  // check Facebook Login status
-      cookie     : true,  // enable cookies to allow Parse to access the session
-      xfbml      : true,  // initialize Facebook social plugins on the page
-      version    : 'v2.3' // point to the latest Facebook Graph API version
-    });
+  Parse.FacebookUtils.init({ // this line replaces FB.init({
+    appId      : config.facebook.appId, // Facebook App ID
+    status     : true,  // check Facebook Login status
+    cookie     : true,  // enable cookies to allow Parse to access the session
+    xfbml      : true,  // initialize Facebook social plugins on the page
+    version    : 'v2.3' // point to the latest Facebook Graph API version
+  });
+  // Run code after the Facebook SDK is loaded.
+};
  
-    // Run code after the Facebook SDK is loaded.
-  };
- 
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 /**
  * @ngdoc overview
@@ -52,34 +54,32 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        access: {
-          needLogin: false
-        }
+        access: 'guest',
       })
       .when('/logout', {
         templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl'
+        controller: 'LogoutCtrl',
+        access: 'user',
       })
       .when('/signup', {
         templateUrl: 'views/signup.html',
         controller: 'SignupCtrl',
-        access: {
-          needLogin: false
-        }
+        access: 'guest',
       })
       .when('/protected', {
         templateUrl: 'views/protected.html',
         controller: 'ProtectedCtrl',
-        access: {
-          needLogin: true
-        }
+        access: 'user',
+      })
+      .when('/restricted', {
+        templateUrl: 'views/protected.html',
+        controller: 'ProtectedCtrl',
+        access: ['admin','seller'],
       })
       .when('/resetpassword', {
         templateUrl: 'views/resetpassword.html',
         controller: 'ResetpasswordCtrl',
-        access: {
-          needLogin: false
-        }
+        access: 'guest',
       })
       .otherwise({
         redirectTo: '/'
@@ -87,18 +87,14 @@ angular
   })
   .run(function ($rootScope, $location, auth) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-      
-      if (next.access && !auth.isLoggedIn() && next.access.needLogin) {
-        //console.log(next);
-        auth.setPreviousUrl(next.$$route.originalPath);
-        $location.path('/login');
-      };
-
-      if (next.access && auth.isLoggedIn() && (!next.access.needLogin)) {
-        //console.log(next);
-        $location.path('/');
-      };
-
+      //check roles
+      if(next.access){
+        if(!auth.hasAccess(next.access)){
+          var defaultRoute=next.defaultRoute;
+          if(!defaultRoute)
+            defaultRoute=auth.isLoggedIn() ? '/' : '/login';
+          $location.path(defaultRoute);
+        }
+      }
     })
-  })
-  ;
+  });

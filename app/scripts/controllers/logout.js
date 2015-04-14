@@ -9,7 +9,10 @@
  */
 angular.module('test150327App')
   .controller('LogoutCtrl', function ($scope,$location,auth) {
-  	auth.logout(function(){
-  		$location.path('/');
-  	});
+  	auth.logout({
+      success:function(){
+  		  $location.path('/');
+  	  },error:function(){
+      }
+    });
   });

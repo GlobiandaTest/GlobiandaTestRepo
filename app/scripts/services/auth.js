@@ -9,14 +9,53 @@
  */
 angular.module('test150327App')
   .factory('auth', function () {
-    // Service logic
-    // ...
 
-    // someone is logged in?? yes -> user, no -> null
-    var currentUser = Parse.User.current();
+    // some user data
+    var currentUser, currentRoles;
    
     // previous url for login
     var previousUrl;
+
+    function UpdateCurrentUser(){
+      //update current user
+      currentUser = Parse.User.current();
+      if(currentUser){
+        var roles = new Parse.Query(Parse.Role);
+        //get roles...
+        roles.equalTo("users",currentUser).find({
+          success:function(results) {
+            if(results.length){
+              currentRoles = results;
+              //append internal roles...
+              for (var i = 0; i < results.length; i++){
+                results[i].getRoles().query().find({
+                  success: function(sresults) {
+                    currentRoles = currentRoles.concat(sresults);
+                  },
+                  error: function(error) {
+                    console.log(error);
+                  }
+                });
+              }
+            }else{
+              //fix users without roles
+              currentRoles = [new Parse.Role('user', new Parse.ACL())];
+              console.log("Warning! user hasn't roles!");
+            }
+          },
+          error:function(error) {
+            currentRoles = [new Parse.Role('guest', new Parse.ACL())];
+            console.log("Error when getting user roles!");
+          }
+        });
+      }else{
+        //guests has "guest" role
+        currentRoles = [new Parse.Role('guest', new Parse.ACL())];
+      }
+    }
+    
+    //Initial user data...
+    UpdateCurrentUser();
     
     // Public API here
     return {
@@ -25,13 +64,13 @@ angular.module('test150327App')
       login: function authLogin(user,pass,cb) {
         Parse.User.logIn(user,pass, {
           success: function(user) {
-            currentUser = Parse.User.current();
-            if (cb.success) {
+            UpdateCurrentUser();
+            if (cb && cb.success) {
               cb.success(user);
             }
           },
           error: function (user, error) {
-            if(cb.error) {
+            if(cb && cb.error) {
               cb.error(user, error);
             }
           }
@@ -45,16 +84,15 @@ angular.module('test150327App')
         user.set('password', password);
         user.set('email', email);
         user.set('fullname', fullname);
-
         user.signUp(null, {
           success: function (user) {
-            currentUser = Parse.User.current();
-            if (cb.success) {
+            UpdateCurrentUser();
+            if (cb && cb.success) {
               cb.success(user);
             }
           },
           error: function (user, error) {
-            if (cb.error) {
+            if (cb && cb.error) {
               cb.error(user, error);
             }
           }
@@ -63,11 +101,15 @@ angular.module('test150327App')
 
       //logout
       logout: function authLogout(cb) {
-        Parse.User.logOut()
-        .then(function () {
-          currentUser = Parse.User.current();
-          cb();
-        });
+        if(currentUser){
+          Parse.User.logOut().then(function () {
+            UpdateCurrentUser();
+            if (cb && cb.success)
+              cb.success();
+          });
+        }else if(cb && cb.error){
+          cb.error('User not logged');
+        }
       },
 
       //loginfb
@@ -75,19 +117,14 @@ angular.module('test150327App')
         Parse.FacebookUtils.logIn("email", {
           success: function(user) {
             if (!user.existed()) {
-
-              console.log("User signed up and logged in through Facebook!");
               FB.api('/me', function(me){
-                console.log(me);
                 user.set("fullname", me.name);
                 user.set("email", me.email);
                 user.set("fbid", me.id);
-                console.log("casaperro = ", me);
-
                 user.save(null, {
                   success: function(user) {
                     // Execute any logic that should take place after the object is saved.
-                    currentUser = Parse.User.current();
+                    UpdateCurrentUser();
                     if (cb && cb.successSignup) {
                       cb.successSignup(user);
                     }
@@ -95,19 +132,17 @@ angular.module('test150327App')
                   error: function(user, error) {
                     // Execute any logic that should take place if the save fails.
                     // error is a Parse.Error with an error code and message.
-                    alert('Failed to create new object, with error code: ' + error.message);
+                    console.log('Failed to create new object, with error code: ' + error.message);
                   }});
               });
             } else {
-              console.log("User logged in through Facebook!");
-              currentUser = Parse.User.current();
+              UpdateCurrentUser();
               if (cb && cb.successLogin) {
                 cb.successLogin(user);
               }
             }
           },
           error: function(user, error) {
-            console.log("User cancelled the Facebook login or did not fully authorize.");
             if (cb && cb.error) {
                 cb.error(user, error);
             }
@@ -117,11 +152,29 @@ angular.module('test150327App')
 
       //is logged in
       isLoggedIn: function authIsLoggedIn() {
-        if (currentUser) {
-          return true;
-        } else {
-          return false;
+        return (currentUser != null);
+      },
+
+      //get user roles
+      getRoles: function authGetRoles() {
+        return currentRoles;
+      },
+
+      //check user has a role or roles
+      hasAccess: function authHasAccess(access) {
+        if(currentRoles.length){
+          if(!$.isArray(access))
+            access=[access];
+          for (var i = 0; i < currentRoles.length; i++) {
+            if(currentRoles[i].attributes){
+              var r = currentRoles[i].get('name');
+              if($.inArray(r, access)!=-1){
+                return true;
+              }
+            }
+          }
         }
+        return false;
       },
 
       //get current user
@@ -145,9 +198,15 @@ angular.module('test150327App')
       },
 
       getCurrentUserData: function authGetCurrentUserData (cb) {
-        Parse.User.current().fetch().then(function (us) {
-          cb.success(us);
-        });
+        if(currentUser){
+          currentUser.fetch().then(function (us) {
+            if(cb && cb.success){
+              cb.success(us);
+            }
+          });
+        }else if(cb && cb.error){
+          cb.error('User not logged');
+        }
       },
 
       updateCurrentUserData: function authUpdateCurrentUserData (fullname, email, phone, cb) {
@@ -174,7 +233,6 @@ angular.module('test150327App')
         var avatar = new Parse.File(currentUser.get('username')+"-avatar", file);
 
         avatar.save().then(function() {
-          
           currentUser.set('avatar', avatar);
           currentUser.save(null, {
             success: function (us) {
@@ -189,7 +247,9 @@ angular.module('test150327App')
             }
           });
         }, function(error) {
-          cb.errorFile(error);
+          if(cb && cb.errorFile){
+            cb.errorFile(error);
+          }
         });
       },
 
@@ -197,13 +257,12 @@ angular.module('test150327App')
       resetPassword: function authResetPassword (email, cb) {
         Parse.User.requestPasswordReset(email, {
           success: function() {
-            if(cb.success){
+            if(cb && cb.success){
               cb.success();
             }
           },
           error: function(error) {
-            if(cb.error){
-              //error.code error.message
+            if(cb && cb.error){
               cb.error(error);
             }
           }
