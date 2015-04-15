@@ -10,7 +10,7 @@
 angular.module('test150327App')
   .controller('SignupCtrl', function ($scope, auth, $location) {
 
-  	$scope.error = "";
+  	$scope.error = '';
 
   	$scope.doSignUp = function () {
   		auth.signUp($scope.form.user, $scope.form.pass, $scope.form.email, $scope.form.fullname, {

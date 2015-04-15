@@ -1,7 +1,7 @@
 'use strict';
 
 //load config
-var config=$.parseJSON($.ajax({url: "config/global.json", dataType: 'json', async: false}).responseText);
+var config=$.parseJSON($.ajax({url: 'config/global.json', dataType: 'json', async: false}).responseText);
 
 Parse.initialize(config.parse.applicationId,config.parse.javaScriptKey);
 
@@ -20,7 +20,7 @@ window.fbAsyncInit = function() {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
+  js.src = '//connect.facebook.net/en_US/sdk.js';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
@@ -91,16 +91,17 @@ angular
       });
   })
   .run(function ($rootScope, $location, auth) {
-    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
       //check roles
       if(next.access){
         if(!auth.hasAccess(next.access)){
           auth.setPreviousUrl(next.$$route.originalPath);
           var defaultRoute=next.defaultRoute;
-          if(!defaultRoute)
-            defaultRoute=auth.isLoggedIn() ? '/' : '/login';
+          if(!defaultRoute){
+            defaultRoute=(auth.isLoggedIn() ? '/' : '/login');
+          }
           $location.path(defaultRoute);
         }
       }
-    })
+    });
   });

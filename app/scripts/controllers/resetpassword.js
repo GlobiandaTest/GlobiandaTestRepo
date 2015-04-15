@@ -23,5 +23,6 @@ angular.module('test150327App')
             	$scope.$apply();
   			}
   		});
-  	}
+  	};
+    
   });

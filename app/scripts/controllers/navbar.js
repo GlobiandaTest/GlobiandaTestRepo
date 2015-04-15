@@ -13,7 +13,7 @@ angular.module('test150327App')
     $scope.getCurrentUser = auth.getCurrentUser;
 
     $scope.actUser = {};
-    $scope.fbProfileUrl = "";
+    $scope.fbProfileUrl = '';
 
     $scope.$watch(function() {
     	return $scope.getCurrentUser();
@@ -29,7 +29,7 @@ angular.module('test150327App')
 	    	}});
     	} else {
     		$scope.actUser = {};
-    		$scope.fbProfileUrl = "";
+    		$scope.fbProfileUrl = '';
     		//$scope.$apply();
     	}
     	//alert('cambio el user');

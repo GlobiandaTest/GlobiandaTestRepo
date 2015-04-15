@@ -13,8 +13,8 @@ angular.module('test150327App')
   	$scope.user = {};
   	$scope.formData = {};
 
-  	$scope.error = "";
-  	$scope.success = "";
+  	$scope.error = '';
+  	$scope.success = '';
 
   	$scope.edit = false;
 
@@ -38,7 +38,7 @@ angular.module('test150327App')
   		auth.updateCurrentUserData($scope.formData.fullname, $scope.formData.email, $scope.formData.phone, {
   			success: function (us) {
   				console.log('Yay! The Changes has been made correctly by Parse.com! ;)');
-          $scope.success = "The Changes has been applied";
+          $scope.success = 'The Changes has been applied';
           $scope.user = us;
           $scope.edit = false;
           $scope.$apply();
@@ -56,7 +56,7 @@ angular.module('test150327App')
         var file = fileUploadControl.files[0];
         auth.uploadProfileImg(file, {
           success: function (us) {
-            $scope.success = "The Image has been uploaded";
+            $scope.success = 'The Image has been uploaded';
             $scope.user = us;
             $scope.edit = false;
             $scope.$apply();
@@ -66,10 +66,10 @@ angular.module('test150327App')
             $scope.$apply();
           },
           errorFile: function (error) {
-            $scope.error = "The file either could not be read, or could not be saved to Parse."
+            $scope.error = 'The file either could not be read, or could not be saved to Parse.';
             $scope.$apply();
           }
-        })
+        });
       }
     };
 

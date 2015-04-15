@@ -10,7 +10,7 @@
 angular.module('test150327App')
   .controller('LoginCtrl', function ($scope, auth, $location) {
 
-    $scope.error = "";
+    $scope.error = '';
 
   	$scope.doLogin = function () {
   		auth.login($scope.form.user,$scope.form.pass, 
@@ -18,7 +18,6 @@ angular.module('test150327App')
   				success: function loginSuccess(user) {
   					//alert(user._sessionToken);
             //console.log('Email verification: 'user.get('emailVerified'));
-  					
             redirectUrl();
   					$scope.$apply();
   				},
@@ -27,7 +26,7 @@ angular.module('test150327App')
             $scope.$apply();
   				}
   			}
-  		)
+  		);
   	};
 
     $scope.doLoginFb = function () {
@@ -53,7 +52,7 @@ angular.module('test150327App')
         auth.clearPreviousUrl();
       } else {
         $location.path('/');
-      };
-    }
+      }
+    };
 
   });
