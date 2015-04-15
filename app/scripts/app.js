@@ -86,6 +86,10 @@ angular
         controller: 'RelacionCtrl',
         access: 'user'
       })
+      .when('/seller/createmeal', {
+        templateUrl: 'views/seller/createmeal.html',
+        controller: 'SellerCreatemealCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
