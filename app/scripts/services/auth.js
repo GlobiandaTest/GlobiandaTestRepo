@@ -19,6 +19,8 @@ angular.module('test150327App')
     function UpdateCurrentUser(){
       //update current user
       currentUser = Parse.User.current();
+      //guests has "guest" role
+      currentRoles = [new Parse.Role('guest', new Parse.ACL())];
       if(currentUser){
         var roles = new Parse.Query(Parse.Role);
         //get roles...
@@ -44,13 +46,9 @@ angular.module('test150327App')
             }
           },
           error:function(error) {
-            currentRoles = [new Parse.Role('guest', new Parse.ACL())];
             console.log("Error when getting user roles!");
           }
         });
-      }else{
-        //guests has "guest" role
-        currentRoles = [new Parse.Role('guest', new Parse.ACL())];
       }
     }
     

@@ -81,6 +81,11 @@ angular
         controller: 'ResetpasswordCtrl',
         access: 'guest',
       })
+      .when('/relacion', {
+        templateUrl: 'views/relacion.html',
+        controller: 'RelacionCtrl',
+        access: 'user'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -90,6 +95,7 @@ angular
       //check roles
       if(next.access){
         if(!auth.hasAccess(next.access)){
+          auth.setPreviousUrl(next.$$route.originalPath);
           var defaultRoute=next.defaultRoute;
           if(!defaultRoute)
             defaultRoute=auth.isLoggedIn() ? '/' : '/login';

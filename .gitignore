@@ -5,5 +5,5 @@ dist
 bower_components
 app/config
 parsecloud/config
-/nbproject/private/
+nbproject/private/
 parse150327.sublime-workspace
